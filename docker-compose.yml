@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  nginx1:
+    image: nginx
+    container_name: nginx1
+    ports:
+      - "8081:80"
+
+  nginx2:
+    image: nginx
+    container_name: nginx2
+    ports:
+      - "8082:80"
+
+  nginx3:
+    image: nginx
+    container_name: nginx3
+    ports:
+      - "8083:80"
+
+  nginx4:
+    image: nginx
+    container_name: nginx4
+    ports:
+      - "8084:80"
+
+  loadbalancer:
+    image: nginx
+    container_name: loadbalancer
+    ports:
+      - "8085:80"
+    depends_on:
+      - nginx1
+      - nginx2
+      - nginx3
+      - nginx4
+
